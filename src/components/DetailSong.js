@@ -1,24 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Songs } from '../context';
 
 function DetailSong() {
+    const { song } = useContext(Songs);
+
     return (
         <div className="col-span-1 p-3">
             <h2 className="font-bold">Now playing</h2>
-            <h2 className="text-2xl">I'll Show You</h2>
+            <h2 className="text-2xl">{song.name}</h2>
             <div className="w-[240px] mt-10">
                 <img
                     className="w-full rounded-lg"
-                    src="https://i.scdn.co/image/ab6761610000e5ebc02d416c309a68b04dc94576"
+                    src={song.links.images[0].url}
                     alt=""
                 />
             </div>
             <div className="flex items-center mt-10">
                 <img
                     className="w-[70px] rounded-full"
-                    src="https://i.scdn.co/image/ab67616d0000b273f46b9d202509a8f7384b90de"
+                    src={song.links.images[1].url}
                     alt=""
                 />
-                <span className="text-xl ml-10">Justin Bieber</span>
+                <span className="text-xl ml-10">{song.author}</span>
             </div>
         </div>
     );
